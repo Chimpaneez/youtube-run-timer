@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Run Timer</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="main.js"></script>
+</head>
+<body>
+  <main>
+    <h1>YouTube Run Timer</h1>
+    <div class="content">
+      <p>A tool for convenient retiming of speedruns - Created by Chimpaneez (<a href="https://github.com/Chimpaneez/youtube-run-timer" title="GitHub - YouTube Run Timer" target="_blank">Source Code</a>)</p>
+    </div>
+    <div class="content">
+      <div class="link-wrapper">
+        <div class="input-wrapper">
+            <input type="text" id="video-link" class="button-end-left" oninput="loadVideo()" placeholder="https://www.youtube.com/watch?v=RgNIP2rHsbM">
+        </div>
+        <input type="text" id="video-framerate" class="button-end-right" oninput="updateFramerate()"> 
+      </div>
+    </div>
+    <div id="player-wrapper">
+      <div id="player"></div>
+    </div>
+    <div class="content">
+      <h4>Controls</h4>
+      <button onclick="seekBackward()" title="Previous frame">&lt;</button>
+      <button onclick="togglePlay()" title="Play/Pause">||</button>
+      <button onclick="seekForward()" title="Advance frame">&gt;</button>
+    </div>
+    <div class="content">
+      <table>
+        <thead>
+          <tr>
+            <th>Start</th>
+            <th>End</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input id="start-time" class="input-segment button-end-left" disabled><!--
+              --><button class="button-segment" onclick="getStartTime()">Get</button><!--
+              --><button class="button-segment button-end-right" onclick="seekStart()">Seek</button>
+            </td>
+            <td>
+              <input id="end-time" class="input-segment button-end-left" disabled><!--
+              --><button class="button-segment" onclick="getEndTime()">Get</button><!--
+              --><button class="button-segment button-end-right" onclick="seekEnd()">Seek</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="content">
+      <h4>Final Time</h4>
+      <input id="final-time" class="input-segment button-end-left" disabled><!--
+      --><button onclick="copyFinalTime()" class="button-segment button-end-right" title="Copy to clipboard">Copy</button>
+    </div>
+  </main>
+</body>
+</html>
