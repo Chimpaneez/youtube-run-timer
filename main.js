@@ -17,9 +17,8 @@ function onYouTubeIframeAPIReady() {
 }
 
 function loadVideo() {
-  var vidId = document.getElementById("video-link").value;
-  vidId = youtubeParse(vidId);
-
+  var vidId = youtubeParse(document.getElementById("video-link").value);
+  
   if (vidId != false) {
     var el = document.querySelector("#player");
     el.parentNode.removeChild(el);
@@ -37,6 +36,7 @@ function loadVideo() {
 function updateFramerate() {
   framerate = document.getElementById("video-framerate").value;
 }
+
 window.onload = function() {
   document.getElementById("start-time").value = formatTime(0);
   document.getElementById("end-time").value = formatTime(0);
@@ -59,16 +59,16 @@ function youtubeParse(url) {
 function getStartTime() {
   var f = startFrame = Math.floor(player.getCurrentTime() * framerate);
   document.getElementById("start-time").value = formatTime(f / framerate);
-  getfinalTime();
+  getFinalTime();
 }
 
 function getEndTime() {
   var f = endFrame = Math.floor(player.getCurrentTime() * framerate);
   document.getElementById("end-time").value = formatTime(f / framerate);
-  getfinalTime();
+  getFinalTime();
 }
 
-function getfinalTime() {
+function getFinalTime() {
   var t = formatTime(((endFrame - startFrame) / framerate).toFixed(3));
   document.getElementById("final-time").value = t;
 }
@@ -117,7 +117,7 @@ function togglePlay() {
 
 function copyFinalTime() {
   var str = document.getElementById("final-time").value;
-  const el = document.createElement("textarea");
+  var el = document.createElement("textarea");
   el.value = str;
   document.body.appendChild(el);
   el.select();
