@@ -19,7 +19,7 @@ function onYouTubeIframeAPIReady() {
 function loadVideo() {
   var vidId = youtubeParse(document.getElementById("video-link").value);
   
-  if (vidId != false) {
+  if (vidId != null) {
     var el = document.querySelector("#player");
     el.parentNode.removeChild(el);
     var div = document.createElement("div");
@@ -45,15 +45,9 @@ window.onload = function() {
 };
 
 function youtubeParse(url) {
-  if (url.length < 11) {
-    return false;
-  } else if (url.length == 11) {
-    return url;
-  } else {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    return (match && match[7].length == 11) ? match[7] : false;
-  }
+  var regExp = /youtu\.?be.*(?:\/|v=)([\w-]{11})/;
+  var match = url.match(regExp);
+  return (match != null) ? match[1] : null;
 }
 
 function getStartTime() {
