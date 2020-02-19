@@ -16,6 +16,5 @@ The time will then be calculated to the nearest frame.
     - Source video framerate incompatible with YouTube (YouTube will convert framerates such as 59.94 to compatible ones, losing accuracy)
     - Dropped frames in source video
     - Source video framerate different to that of game
-- YouTube player error (avoid these by seeking to the start/end frame once)
-    - Time of 1.0166667 @60 will display as frame 60, but be calculated as 61
-    - Player error in seeking (will display a different frame to what it should)
+- YouTube player error
+    - This should be automatically corrected now. Still double check times if accuracy is important.
