@@ -50,14 +50,20 @@ function youtubeParse(url) {
   return (match != null) ? match[1] : null;
 }
 
+function getTime() {
+  return Math.floor(player.getCurrentTime() * framerate);
+}
+
 function getStartTime() {
-  var f = startFrame = Math.floor(player.getCurrentTime() * framerate);
+  var f = startFrame = getTime();
+  seekStart();
   document.getElementById("start-time").value = formatTime(f / framerate);
   getFinalTime();
 }
 
 function getEndTime() {
-  var f = endFrame = Math.floor(player.getCurrentTime() * framerate);
+  var f = endFrame = getTime();
+  seekEnd();
   document.getElementById("end-time").value = formatTime(f / framerate);
   getFinalTime();
 }
